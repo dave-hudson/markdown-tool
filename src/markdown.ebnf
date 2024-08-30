@@ -1,0 +1,56 @@
+document         = { block };
+
+block            = heading | paragraph | blockquote | list | code_block | horizontal_rule | table | html_block | footnote;
+
+heading          = heading1 | heading2 | heading3 | heading4 | heading5 | heading6;
+heading1         = "#" , text , newline;
+heading2         = "##" , text , newline;
+heading3         = "###" , text , newline;
+heading4         = "####" , text , newline;
+heading5         = "#####" , text , newline;
+heading6         = "######" , text , newline;
+
+paragraph        = { inline }, newline, newline;
+
+blockquote       = ">" , { text | newline };
+
+list             = unordered_list | ordered_list;
+unordered_list   = { unordered_list_item };
+unordered_list_item = ("* " | "- " | "+ ") , text , { newline , indentation , unordered_list_item };
+ordered_list     = { ordered_list_item };
+ordered_list_item = digit , "." , text , { newline , indentation , ordered_list_item };
+
+code_block       = "```" , [language], newline , { code_text | newline } , "```", newline;
+
+horizontal_rule  = ("---" | "***" | "___"), newline;
+
+table            = table_header, table_divider, { table_row };
+table_header     = "|", { text , "|" }, newline;
+table_divider    = "|", { "-" , "|" }, newline;
+table_row        = "|", { text , "|" }, newline;
+
+html_block       = "<", { any_char }, ">", newline;
+
+footnote         = "[^", digit, "]:", text, newline;
+
+inline           = text | emphasis | strong | strikethrough | link | image | inline_code;
+emphasis         = "*" , text , "*" | "_" , text , "_";
+strong           = "**" , text , "**" | "__" , text , "__";
+strikethrough    = "~~" , text , "~~";
+link             = "[" , text , "]" , "(" , url , ")";
+image            = "!" , "[" , text , "]" , "(" , url , ")";
+inline_code      = "`" , code_text , "`";
+
+text             = { any_char_but_newline };
+code_text        = { any_char_but_backtick };
+newline          = "\n";
+indentation      = { " " | "\t" };
+url              = { any_char_but_parentheses };
+language         = { any_char_but_newline };
+
+any_char_but_newline = ? any character except newline ?;
+any_char_but_backtick = ? any character except backtick ?;
+any_char_but_parentheses = ? any character except parentheses ?;
+any_char        = ? any character ?;
+digit           = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+

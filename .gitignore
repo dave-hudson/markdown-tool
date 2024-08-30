@@ -1,0 +1,13 @@
+# Ignore temp files
+*~
+*.swp
+
+# Ignore VSCode
+.vscode
+.venv
+
+# Ignore output files
+build/*
+
+# Ignore Mac system files
+.DS_Store
