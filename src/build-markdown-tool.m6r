@@ -1,4 +1,4 @@
-Target: Site rendering application
+Action: Site rendering application
     Please review the specification for a markdown processing tool and build an implementation of it.
 
     Import: src/markdown-tool-spec.m6r

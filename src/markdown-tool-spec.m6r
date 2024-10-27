@@ -1,57 +1,57 @@
-Scope: Markdown lexer
-    Scope: Core functionality
+Context: Markdown lexer
+    Context: Core functionality
         The tool will scan a markdown file and lexically analyze it.
 
-    Scope: Lexer
+    Context: Lexer
         The lexer will be implemented as a class that is passed a file.  It will expose a function, get_next_token() that
         will return the next token in the file.  When there are no more tokens it will emit a special end-of-file token.
 
-        Scope: Tokens
+        Context: Tokens
             The tokens emitted by the lexer should include the token type, the value of the token, the line number on
             which the token was found, and the column number at which it was found that that line.
 
-        Scope: Errors
+        Context: Errors
             Carefully check that elements are well formed.  If any elements are not well formed in file being parsed
             then emit error tokens to indicate the problem.
 
-    Scope: Markdown grammar
+    Context: Markdown grammar
         The EBNF grammar of the markdown is given here:
 
         Embed: src/markdown.ebnf
 
-    Scope: Output
-        Scope:
+    Context: Output
+        Context:
             On lexing a markdown file, emit details of the tokens that are being returned from the lexer to the console.
 
-    Scope: Tool invocation
-        Scope: Command line tool
+    Context: Tool invocation
+        Context: Command line tool
             The application will be run from the command line with appropriate command line parameters.
 
-        Scope: Default parameter
+        Context: Default parameter
             The default command line parameter is the name of the source markdown file.
 
-    Scope: Implementation and dependencies
+    Context: Implementation and dependencies
         As an engineer working with the application, I want the application to be easy to use and understand,
         so I can maintain and enhance it over time.
 
-        Scope: Implement in Python 3
+        Context: Implement in Python 3
             The tool will be written in the latest version of Python 3.
 
-        Scope: No external dependencies
+        Context: No external dependencies
             Do not use any external depencies other than standard components that are distributed with the Python 3
             runtime.
 
-        Scope: Indentation of code
+        Context: Indentation of code
             Code must be indented by 4 spaces.
 
-        Scope: Use of docstrings
+        Context: Use of docstrings
             Use docstrings to describe all modules, classes, and functions.
 
-        Scope: Use of comments
+        Context: Use of comments
             Use additional comments to describe any complex logic.
 
-        Scope: PEP 8 imports
+        Context: PEP 8 imports
             The import list in any module should follow PEP 8 guidelines.
 
-        Scope: Avoid unnecessary elif and else statements
+        Context: Avoid unnecessary elif and else statements
             Do not use elif or else statements if the preceding statement returns.
